@@ -3,19 +3,19 @@
 // Date: 14/11/17
 // Subject: OOP - Flight Control System Assignment
 
-#include<iostream>
-#include<string>
+
 #include"Aircraft.h"
 
 Aircraft::Aircraft()
 
 {
-
+	//Remove cout messages after testing only have the messages that the assignment states
+	std::cout << "Aircraft constructor called" << std::endl;
 
 }
 
 Aircraft::Aircraft(std::string flightNumber, std::string airline, std::string aircraftType,
-	std::string gridReference, int groundSpeed, int altitude, int heading) {};
+	std::string gridReference, int groundSpeed, int altitude, int heading)
 
 {
 	flightNumber_ = flightNumber;
