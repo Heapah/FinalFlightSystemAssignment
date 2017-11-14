@@ -30,24 +30,24 @@ public:
 	// Setters and Getters
 
 	void SetFlightNumber(std::string flightNumber);
-	std::string GetFlightNumber();
+	std::string GetFlightNumber() const;
 
 	void SetAirline(std::string airline);
-	std::string GetAirline();
+	std::string GetAirline() const;
 
 	void SetAircraftType(std::string aircraftType);
-	std::string GetAircraftType();
+	std::string GetAircraftType() const;
 
 	void SetGridReference(std::string gridReference);
-	std::string GetGridReference();
+	std::string GetGridReference() const;
 
 	void SetGroundSpeed(int groundSpeed);
-	int GetGroundSpeed();
+	int GetGroundSpeed() const;
 
 	void SetAltitude(int altitude);
-	int GetAltitude();
+	int GetAltitude() const;
 
 	void SetHeading(int heading);
-	int GetHeading();
+	int GetHeading() const;
 
 };
