@@ -15,17 +15,9 @@ Aircraft::Aircraft()
 }
 
 Aircraft::Aircraft(std::string flightNumber, std::string airline, std::string aircraftType,
-	std::string gridReference, int groundSpeed, int altitude, int heading)
+	std::string gridReference, int groundSpeed, int altitude, int heading) :
+	flightNumber_{ flightNumber }, airline_{ airline }, aircraftType_{ aircraftType }, gridReference_{ gridReference }, groundSpeed_{ groundSpeed }, altitude_{ altitude }, heading_{ heading } {}
 
-{
-	flightNumber_ = flightNumber;
-	airline_ = airline;
-	aircraftType_ = aircraftType;
-	gridReference_ = gridReference;
-	groundSpeed_ = groundSpeed;
-	altitude_ = altitude;
-	heading_ = heading;
-}
 
 
 void Aircraft::SetFlightNumber(std::string flightNumber) {
