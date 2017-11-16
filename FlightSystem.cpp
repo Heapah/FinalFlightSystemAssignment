@@ -6,20 +6,21 @@
 #include "FlightSystem.h"
 #include "Aircraft.h"
 
+
 FlightSystem::FlightSystem()
 {
 }
 
 void FlightSystem::AddAircraft(std::string flightNumber, std::string airline, std::string aircraftType,
-	std::string gridReference, int groundSpeed, int altitude, int heading);
+	std::string gridReference, int groundSpeed, int altitude, int heading) {
 
 // Adds a new Aircraft into the system
 
 Aircraft a1(flightNumber, airline, aircraftType, gridReference, groundSpeed, altitude, heading);
 
 bool DoesFlightExist = false;
-for (int i = 0; i < AircraftList.size(); i++) {
-	if (AircraftList.at(i).GetFlightNumber() == flightNumber) {
+for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+	if (aircraftList_.at(i).GetFlightNumber() == flightNumber) {
 		DoesFlightExist = true;
 	}
 }
@@ -27,29 +28,150 @@ for (int i = 0; i < AircraftList.size(); i++) {
 // If 'DoesFlightExist' equal to false, then a new Aircraft is added to the system
 
 if (DoesFlightExist == false) {
-	AircraftList.push_back(Aircraft(a1));
+
+	aircraftList_.push_back(Aircraft(a1));
 }
 
 // If 'DoesFlightExist equal to true, then an error message is printed to the user
 
 if (DoesFlightExist == true) {
-	std::cout << "Flight " << flightNumber << " already in the system" << endl;
+	std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
 }
+
+}
+
+
 
 // Method for listing all Aircraft
 
 std::vector<Aircraft> FlightSystem::ListAllAircraft() {
-	return AircraftList;
+	return aircraftList_;
 }
 
 // Method for listing all Cruising Aircraft
 
 std::vector<Aircraft> FlightSystem::ListAllCruisingAircraft() {
-	std::vector<Aircraft> AircraftListAbove30k
-}
-for (int i = 0; i < AircraftList.size(); i++) {
-	if (AircraftList[i].GetAltitude() >= 30000) {
-		AircraftListAbove30k.push_back(AircaftList[i]);
+	std::vector<Aircraft> AircraftListAbove30k;
+
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+		if (aircraftList_[i].GetAltitude() >= 30000) {
+			AircraftListAbove30k.push_back(aircraftList_[i]);
+		}
+		return AircraftListAbove30k;
 	}
-	return AircraftListAbove30k;
+}
+
+ // Method for removing an Aircraft
+
+void FlightSystem::RemoveAircraft(std::string flightNumber) {
+
+	bool DoesFlightExist = false;
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+		if (aircraftList_.at(i).GetFlightNumber() == flightNumber) {
+			DoesFlightExist = true;
+		}
+	}
+
+ // If 'DoesFlightExist' equal to true, then the Aircraft specific to the Flight Number is removed from the system
+
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+		if (DoesFlightExist = true)
+		aircraftList_.erase(aircraftList_.begin() + i);
+	}
+
+ // If 'DoesFlightExist equal to false, then an error message is printed to the user
+
+	if (DoesFlightExist == false) {
+		std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
+	}
+}
+
+ // Method for changing the Heading
+
+void FlightSystem::ChangeHeading(std::string flightNumber, int heading) {
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+
+		// If the Flight Number entered by the user matches the specified flightNumber, the user will get a prompt to change the Heading
+
+		if (aircraftList_[i].GetFlightNumber() == flightNumber) {
+			aircraftList_.at(i).SetHeading(heading);
+			std::cout << "Heading of flight " << aircraftList_.at(i).GetFlightNumber() << " changed to " << heading << std::endl;
+		}
+
+		// If the Flight Number entered by the user does not match the specified flightNumber, the user will get get an error message
+
+		if (aircraftList_[i].GetFlightNumber() != flightNumber) {
+			std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
+		}
+	}
+}
+
+ // Method for returning the Heading value
+
+int FlightSystem::GetHeading(std::string flightNumber) {
+    for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+
+	   // If the Flight Number entered by the user matches the specified flightNumber, the user will get a prompt to change the Heading
+
+		if (aircraftList_[i].GetFlightNumber() == flightNumber) {
+			
+			return aircraftList_.at(i).GetHeading();
+		}
+
+		// If the Flight Number entered by the user does not match the specified flightNumber, the user will get get an error message
+
+		if (aircraftList_[i].GetFlightNumber() != flightNumber) {
+			std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
+		}
+	}
+}
+
+// Method for changing the Altitude
+
+void FlightSystem::ChangeAltitude(std::string flightNumber, int altitude) {
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+
+		// If the Flight Number entered by the user matches the specified flightNumber, the user will get a prompt to change the Altitude
+
+		if (aircraftList_[i].GetFlightNumber() == flightNumber) {
+			aircraftList_.at(i).SetAltitude(altitude);
+			std::cout << "Altitude of flight " << aircraftList_.at(i).GetFlightNumber() << " changed to " << altitude << std::endl;
+		}
+
+		// If the Flight Number entered by the user does not match the specified flightNumber, the user will get get an error message
+
+		if (aircraftList_[i].GetFlightNumber() != flightNumber) {
+			std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
+		}
+	}
+}
+
+// Method for returning the Heading value
+
+int FlightSystem::GetAltitude(std::string flightNumber) {
+	for (unsigned int i = 0; i < aircraftList_.size(); i++) {
+
+		// If the Flight Number entered by the user matches the specified flightNumber, the user will get a prompt to change the Heading
+
+		if (aircraftList_[i].GetFlightNumber() == flightNumber) {
+
+			return aircraftList_.at(i).GetAltitude();
+		}
+
+		// If the Flight Number entered by the user does not match the specified flightNumber, the user will get get an error message
+
+		if (aircraftList_[i].GetFlightNumber() != flightNumber) {
+			std::cout << "Flight " << flightNumber << " already in the system" << std::endl;
+		}
+	}
+}
+
+ // Returning the number of Aircraft in the sector
+
+int FlightSystem::numAircraftInSector() {
+
+	int AircraftNumber = aircraftList_.size();
+
+	return AircraftNumber;
+
 }
