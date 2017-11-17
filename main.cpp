@@ -122,9 +122,9 @@ int main() {
 			break;
 		case 2:
 			cout << "[List of all Aircrafts]" << endl;
-			cout << "[Flight # | Airline | Aircraft Type | Grid Reference | Ground Speed | Altitude | Heading]" << endl;
-			
-			aircraftList_ =  a1.ListAllAircraft() ;
+			cout << "[Flight #|Airline|Aircraft Type|Grid Reference|Ground Speed|Altitude|Heading]" << endl;
+
+			aircraftList_ = a1.ListAllAircraft();
 
 			for (int i = 0; aircraftList_.size(); i++) {
 				// Printing the Flight Number
@@ -195,7 +195,7 @@ int main() {
 			}
 
 			break;
-		
+
 		case 4:
 			cout << "[Please enter the Flight Number of the Aircraft you wish to remove]" << endl;
 			cin >> flightNumber;
